@@ -1,0 +1,7 @@
+.center-grid {
+  display: flex;
+  justify-content: center;
+}
+.center-header {
+  text-align: center;
+}

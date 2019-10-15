@@ -11,7 +11,6 @@ interface IGridData {
 
 @Injectable({ providedIn: 'root' })
 export class AppService {
-  public gridData: IGridData[] = [];
   constructor(private http: HttpClient) {}
   getDataFromAPI(): Observable<any> {
       const url = 'https://www.googleapis.com/youtube/v3/search';

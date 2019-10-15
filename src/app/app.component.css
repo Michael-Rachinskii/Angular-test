@@ -5,3 +5,13 @@
 .center-header {
   text-align: center;
 }
+.toggler-and-counter {
+  display: flex;
+  justify-content: space-between;
+}
+.select-cell {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.select-checkbox {}

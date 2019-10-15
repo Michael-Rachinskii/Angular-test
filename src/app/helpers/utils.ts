@@ -11,3 +11,24 @@ export const cellRenderTime = (params: ICellRendererParams): string => `${moment
 export const cellRenderVideoLink = (params: ICellRendererParams): string => `
     <a href="https://www.youtube.com/watch?v=${params.value.videoId}">${params.value.title}</a>
 `;
+
+const createCheckbox = (isChecked: boolean): HTMLInputElement => {
+  const newCheckbox = document.createElement('input');
+  newCheckbox.setAttribute('type', 'checkbox');
+  if (isChecked) {
+    newCheckbox.setAttribute('checked', 'checked');
+  }
+  newCheckbox.classList.add('select-checkbox');
+
+  return newCheckbox;
+};
+
+export const cellRendererSelectRowCheckbox = (params: ICellRendererParams): HTMLElement => {
+  const rowCheckbox = createCheckbox(params.node.isSelected());
+  rowCheckbox.addEventListener('change', (event: Event): void => {
+    params.node.setSelected((event.target as HTMLInputElement).checked);
+    params.api.refreshHeader();
+  });
+
+  return rowCheckbox;
+};

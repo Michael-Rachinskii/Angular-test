@@ -1,0 +1,26 @@
+/*#main-checkbox {*/
+/*  display: none;*/
+/*}*/
+
+/*.main-checkbox-label {*/
+/*  width: 20px;*/
+/*  height: 20px;*/
+/*  background-color: black;*/
+/*  border: 1px solid #eeeeee;*/
+/*  border-radius: 5px;*/
+/*  display: block;*/
+/*}*/
+
+/*.main-checkbox-label::after {*/
+/*  left: 9px;*/
+/*  top: 5px;*/
+/*  width: 5px;*/
+/*  height: 10px;*/
+/*  border: solid white;*/
+/*  border-width: 0 3px 3px 0;*/
+/*  background-color: white;*/
+/*  -webkit-transform: rotate(45deg);*/
+/*  -ms-transform: rotate(45deg);*/
+/*  transform: rotate(45deg);*/
+/*  z-index: 10;*/
+/*}*/

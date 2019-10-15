@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-header-checkbox.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CustomHeaderCheckboxComponent,
   ],
   imports: [
     BrowserModule,
-    AgGridModule,
+    AgGridModule.withComponents([ CustomHeaderCheckboxComponent ]),
     HttpClientModule,
   ],
-
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

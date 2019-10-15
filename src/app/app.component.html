@@ -2,8 +2,12 @@
 <section class="center-grid">
   <div *ngIf="!loading">
     <div *ngIf="gridOptions.rowData.length; else Loading" style="width: 80vw;">
+      <div class="toggler-and-counter">
+        <button (click)="onToggleSelectionMode()">Toggle selection mode</button>
+        <div>Selected – <strong>{{selectedQuantity}}</strong> / <strong>{{totalQuantity}}</strong> – Total</div>
+      </div>
       <ag-grid-angular #agGrid style="width: 100%; height: 768px;" class="ag-theme-balham"
-                       [gridOptions]="gridOptions">
+                       [gridOptions]="gridOptions" [frameworkComponents]="gridOptions.frameworkComponents">
       </ag-grid-angular>
     </div>
   </div>

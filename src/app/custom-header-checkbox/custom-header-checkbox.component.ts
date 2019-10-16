@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { GridApi, GridOptions } from 'ag-grid-community';
 
 @Component({
   selector: 'app-custom-header-checkbox',
   templateUrl: './custom-header-checkbox.component.html',
-  styleUrls: ['./custom-header-checkbox.component.css']
+  styleUrls: [ './custom-header-checkbox.component.css' ]
 })
 export class CustomHeaderCheckboxComponent {
   api: GridApi;

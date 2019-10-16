@@ -30,7 +30,7 @@ interface IApiDataItem {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.ShadowDom,
   styleUrls: [
     './app.component.css',
     '../../node_modules/ag-grid-community/dist/styles/ag-grid.css',
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     suppressCellSelection: true,
     suppressRowClickSelection: true,
     rowSelection: 'multiple',
-    popupParent: document.querySelector('body'),
+    popupParent: document.querySelector('#root-section'),
     allowContextMenuWithControlKey: true,
     getContextMenuItems: this.getContextMenuItems.bind(this),
   };
@@ -94,8 +94,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.appService.getDataFromAPI()
-      .subscribe((data: any) => {
-        const { items }: { items: any[] } = data;
+      .subscribe((data: { items: IApiDataItem[] }) => {
+        const { items }: { items: IApiDataItem[] } = data;
         this.loading = false;
         this.gridOptions.rowData.push(...items.map((dataItem: IApiDataItem) => ({
           thumbnails: dataItem.snippet.thumbnails.high.url,

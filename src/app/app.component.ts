@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { AppService } from './app.service';
 import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-header-checkbox.component';
 import { CellContextMenuEvent, GetMainMenuItemsParams, GridOptions } from 'ag-grid-community';
@@ -39,14 +39,14 @@ interface IApiDataItem {
 })
 export class AppComponent implements OnInit {
   private gridOptions: GridOptions = {
-    rowData: [],
-    onSelectionChanged: this.rowSelectHandler.bind(this),
-    suppressCellSelection: true,
-    suppressRowClickSelection: true,
-    rowSelection: 'multiple',
-    popupParent: document.querySelector('#root-section'),
     allowContextMenuWithControlKey: true,
     getContextMenuItems: this.getContextMenuItems.bind(this),
+    onSelectionChanged: this.rowSelectHandler.bind(this),
+    popupParent: document.querySelector('#root-section'),
+    rowData: [],
+    rowSelection: 'multiple',
+    suppressCellSelection: true,
+    suppressRowClickSelection: true,
   };
   private loading = false;
   private selectedQuantity = 0;

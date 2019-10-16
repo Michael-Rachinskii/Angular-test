@@ -6,8 +6,8 @@
         <button (click)="onToggleSelectionMode()">Toggle selection mode</button>
         <div>Selected – <strong>{{selectedQuantity}}</strong> / <strong>{{totalQuantity}}</strong> – Total</div>
       </div>
-      <ag-grid-angular #agGrid style="width: 100%; height: 768px;" class="ag-theme-balham"
-                       [gridOptions]="gridOptions" [frameworkComponents]="gridOptions.frameworkComponents">
+      <ag-grid-angular style="width: 100%; height: 768px;" class="ag-theme-balham"
+                      [gridOptions]="gridOptions">
       </ag-grid-angular>
     </div>
   </div>

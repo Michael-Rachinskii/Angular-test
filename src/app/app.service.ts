@@ -1,15 +1,8 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface IGridData {
-  thumbnails: string;
-  publishedAt: Date;
-  title: string;
-  description: string;
-}
-
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class AppService {
   constructor(private http: HttpClient) {}
   getDataFromAPI(): Observable<any> {

@@ -5,6 +5,7 @@ import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-h
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { NgModule } from '@angular/core';
     AgGridModule.withComponents([ CustomHeaderCheckboxComponent ]),
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AppService,
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

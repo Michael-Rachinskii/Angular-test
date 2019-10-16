@@ -1,0 +1,57 @@
+import {
+  ICellParamsArgs,
+  cellRendererSelectRowCheckbox,
+  cellRenderImg,
+  cellRenderTime,
+  cellRenderVideoLink,
+} from './utils';
+import * as moment from 'moment';
+
+const rawParams = {
+  node: {
+    isSelected(): boolean { return true; },
+    setSelected(value): void {
+      console.log(value ? 'selected!' : 'deselected');
+    }
+  },
+  api: {
+    refreshHeader(): void {
+      console.log('refreshed!');
+    }
+  },
+  value: '',
+};
+
+describe('utils', () => {
+  it('should create the checkbox', () => {
+    const params: ICellParamsArgs = rawParams;
+    const checkbox = cellRendererSelectRowCheckbox(params);
+    expect(checkbox.getAttribute('type'))
+      .toContain('checkbox');
+    expect(Boolean(checkbox.getAttribute('checked')))
+      .toBeTruthy();
+  });
+  it('should create the string with link to YouTube', () => {
+    const params: ICellParamsArgs = rawParams;
+    params.value = { videoId: 1, title: 1 };
+    const expectedString = cellRenderVideoLink(params);
+    expect(expectedString.includes(`<a href="https://www.youtube.com/watch?v=${params.value.videoId}">${params.value.title}</a>`))
+      .toBeTruthy();
+  });
+  it('should create the string with link to image', () => {
+    const params: ICellParamsArgs = rawParams;
+    const expectedString = cellRenderImg(params);
+    expect(expectedString.includes(
+      `<img style="width: 100%; height: 200px; display: flex; align-items: center;" src="${params.value}" lazy-src alt="">`
+    ))
+      .toBeTruthy();
+  });
+  it('should create the string with formatted time', () => {
+    const params: ICellParamsArgs = rawParams;
+    params.value = (new Date()).toJSON();
+    const expectedString = cellRenderTime(params);
+    expect(expectedString.includes(`${moment(params.value)
+        .format('LLL')}`))
+      .toBeTruthy();
+  });
+});

@@ -1,13 +1,31 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppService } from './app.service';
 import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-header-checkbox.component';
-import { GridOptions } from 'ag-grid-community';
+import { CellContextMenuEvent, GetMainMenuItemsParams, GridOptions } from 'ag-grid-community';
+import { MenuItemDef } from 'ag-grid-community/src/ts/entities/gridOptions';
+import 'ag-grid-enterprise';
 import {
   cellRendererSelectRowCheckbox,
   cellRenderImg,
   cellRenderTime,
   cellRenderVideoLink,
 } from './helpers/utils';
+
+interface IApiDataItem {
+  snippet: {
+    description: string;
+    title: string;
+    publishedAt: string;
+    thumbnails: {
+      high: {
+        url: string;
+      };
+    };
+  };
+  id: {
+    videoId: string;
+  };
+}
 
 @Component({
   selector: 'app-root',
@@ -26,6 +44,9 @@ export class AppComponent implements OnInit {
     suppressCellSelection: true,
     suppressRowClickSelection: true,
     rowSelection: 'multiple',
+    popupParent: document.querySelector('body'),
+    allowContextMenuWithControlKey: true,
+    getContextMenuItems: this.getContextMenuItems.bind(this),
   };
   private loading = false;
   private selectedQuantity = 0;
@@ -55,7 +76,7 @@ export class AppComponent implements OnInit {
         cellRenderer: cellRenderVideoLink,
         field: 'titleLink',
         headerName: 'Title',
-        width: 300
+        width: 300,
       },
       {
         field: 'description',
@@ -76,7 +97,7 @@ export class AppComponent implements OnInit {
       .subscribe((data: any) => {
         const { items }: { items: any[] } = data;
         this.loading = false;
-        this.gridOptions.rowData.push(...items.map((dataItem: any) => ({
+        this.gridOptions.rowData.push(...items.map((dataItem: IApiDataItem) => ({
           thumbnails: dataItem.snippet.thumbnails.high.url,
           publishedAt: dataItem.snippet.publishedAt,
           titleLink: { title: dataItem.snippet.title, videoId: dataItem.id.videoId },
@@ -98,6 +119,19 @@ export class AppComponent implements OnInit {
     this.selectedQuantity = this.gridOptions.api.getSelectedRows().length;
     const renderedNodes = this.gridOptions.api.getRenderedNodes();
     this.gridOptions.api.refreshCells({ rowNodes: renderedNodes, force: true });
+  }
+
+  getContextMenuItems(params): (string | MenuItemDef)[] {
+    const defaultMenu = [ 'copy', 'copyWithHeaders', 'paste' ];
+    const openInTheNewTab: MenuItemDef = {
+      name: 'Open in the new tab',
+      action: () => {
+        window.open(`https://www.youtube.com/watch?v=${params.value.videoId}`, '_blank');
+      },
+      icon: '⧉',
+    };
+
+    return  params.column.colId === 'titleLink' ? [ ...defaultMenu, 'separator', openInTheNewTab ] : defaultMenu;
   }
 }
 

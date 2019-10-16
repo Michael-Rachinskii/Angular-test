@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-header-checkbox.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { CustomHeaderCheckboxComponent } from './custom-header-checkbox/custom-h
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AgGridModule.withComponents([ CustomHeaderCheckboxComponent ]),
     HttpClientModule,
   ],

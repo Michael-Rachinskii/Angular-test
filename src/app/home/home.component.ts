@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
         width: 50,
         cellRenderer: cellRendererSelectRowCheckbox,
         headerComponentFramework: CustomHeaderCheckboxComponent,
-        headerComponentParams: { ...this.gridOptions },
+        headerComponentParams: this.gridOptions,
         headerClass: 'select-cell',
       },
       {

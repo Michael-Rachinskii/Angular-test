@@ -43,7 +43,7 @@ describe('utils', () => {
     const params: ICellParamsArgs = rawParams;
     const expectedString = cellRenderImg(params);
     expect(expectedString.includes(
-      `<img style="width: 100%; height: 200px; display: flex; align-items: center;" src="${params.value}" lazy-src alt="">`
+      `<img class="image-cell" src="${params.value}" lazy-src alt="Image was not loaded">`
     ))
       .toBeTruthy();
   });

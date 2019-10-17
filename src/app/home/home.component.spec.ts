@@ -3,7 +3,7 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { HomeComponent } from './home.component';
-import { HomeService } from './services/home.service';
+import { HomeService } from './services';
 import { CustomHeaderCheckboxComponent } from './components/custom-header-checkbox/custom-header-checkbox.component';
 
 describe('HomeComponent', () => {

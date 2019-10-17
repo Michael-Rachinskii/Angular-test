@@ -1,21 +1,20 @@
 <h1 class="center-header">Angular test</h1>
 <section id="root-section" class="center-grid">
-  <div *ngIf="!loading">
-    <div *ngIf="gridOptions.rowData.length; else Loading" style="width: 80vw;">
-      <div class="toggler-and-counter">
-        <button (click)="onToggleSelectionMode()">Toggle selection mode</button>
-        <div>Selected – <strong>{{selectedQuantity}}</strong> / <strong>{{totalQuantity}}</strong> – Total</div>
-      </div>
-      <ag-grid-angular style="width: 100%; height: 768px;" class="ag-theme-balham"
-                       [gridOptions]="gridOptions">
-      </ag-grid-angular>
-    </div>
-  </div>
-  <div *ngIf="loading">
+  <div *ngIf="loading; else loaded">
     Loading...
   </div>
 </section>
 
-<ng-template #Loading>
+<ng-template #loaded>
+  <div *ngIf="gridOptions.rowData.length; else noData" style="width: 80vw;">
+    <div class="toggler-and-counter">
+      <button (click)="onToggleSelectionMode()">Toggle selection mode</button>
+      <div>Selected – <strong>{{selectedQuantity}}</strong> / <strong>{{totalQuantity}}</strong> – Total</div>
+    </div>
+    <ag-grid-angular class="ag-theme-balham grid-size" [gridOptions]="gridOptions"></ag-grid-angular>
+  </div>
+</ng-template>
+
+<ng-template #noData>
   There is no data.
 </ng-template>

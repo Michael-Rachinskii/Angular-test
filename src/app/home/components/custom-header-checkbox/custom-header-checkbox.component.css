@@ -31,7 +31,3 @@
   display: block;
   transition: 0.3s
 }
-
-.main-checkbox:checked .main-checkbox-label {
-  background-color: green;
-}

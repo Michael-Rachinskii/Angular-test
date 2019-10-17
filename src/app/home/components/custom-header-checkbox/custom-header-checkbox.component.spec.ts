@@ -5,8 +5,8 @@ describe('CustomHeaderCheckboxComponent', () => {
   let component: CustomHeaderCheckboxComponent;
   let fixture: ComponentFixture<CustomHeaderCheckboxComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ CustomHeaderCheckboxComponent ]
     })
     .compileComponents();

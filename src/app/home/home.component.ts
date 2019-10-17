@@ -24,7 +24,7 @@ import {
   ]
 })
 export class HomeComponent implements OnInit {
-  private gridOptions: GridOptions = {
+  private readonly gridOptions: GridOptions = {
     allowContextMenuWithControlKey: true,
     getContextMenuItems: this.getContextMenuItems.bind(this),
     onSelectionChanged: this.rowSelectHandler.bind(this),
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   private selectionMode = false;
   private totalQuantity = 0;
 
-  constructor(private appService: HomeService) {
+  constructor(private readonly appService: HomeService) {
     this.gridOptions.columnDefs = [
       {
         colId: 'select-checkboxes',
@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
         this.totalQuantity = this.gridOptions.rowData.length;
       }, (error) => {
         this.loading = false;
-        console.log(error.message);
       });
   }
 

@@ -6,8 +6,8 @@ import { HomeService } from './home/services';
 import { HomeModule } from './home/home.module';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ AppComponent ],
       imports: [ HomeModule ],
       providers: [

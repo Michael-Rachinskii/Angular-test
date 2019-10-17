@@ -14,11 +14,6 @@
   transition: 0.3s
 }
 
-.main-checkbox-label:active {
-  background-color: #EEEEEE;
-  transition: 0.3s;
-}
-
 .main-checkbox:checked + .checkbox-checkmark {
   width: 8px;
   height: 12px;

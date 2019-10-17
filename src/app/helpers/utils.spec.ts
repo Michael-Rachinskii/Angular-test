@@ -1,17 +1,18 @@
+import * as moment from 'moment';
+
+import { ICellParamsArgs } from '../home/models';
 import {
-  ICellParamsArgs,
   cellRendererSelectRowCheckbox,
   cellRenderImg,
   cellRenderTime,
   cellRenderVideoLink,
 } from './utils';
-import * as moment from 'moment';
 
 const rawParams = {
   node: {
     isSelected(): boolean { return true; },
     setSelected(value): void {
-      console.log(value ? 'selected!' : 'deselected');
+      console.log(value ? 'selected!' : 'deselected!');
     }
   },
   api: {

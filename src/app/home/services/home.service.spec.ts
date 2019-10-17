@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
-import { AppService } from './app.service';
+import { HomeService } from './home.service';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 
-describe('AppService', () => {
+describe('HomeService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    providers: [ AppService, HttpClient, HttpHandler ]
+    providers: [ HomeService, HttpClient, HttpHandler ]
   }));
 
   it('should be created', () => {
-    const service: AppService = TestBed.get(AppService);
+    const service: HomeService = TestBed.get(HomeService);
     expect(service)
       .toBeTruthy();
   });

@@ -1,13 +1,5 @@
 import * as moment from 'moment';
-
-export interface ICellParamsArgs {
-  api: { refreshHeader(): void; };
-  node: {
-    setSelected(value: boolean): void;
-    isSelected(): boolean;
-  };
-  value: any;
-}
+import { ICellParamsArgs } from '../home/models';
 
 export const cellRenderImg = (params: ICellParamsArgs): string => `
     <img style="width: 100%; height: 200px; display: flex; align-items: center;" src="${params.value}" lazy-src alt="">
